@@ -1,12 +1,18 @@
 <template>
-  <input type="text" :placeholder="placeholder" />
+  <input type="text" :name="name" :placeholder="placeholder" />
 </template>
 
 <script>
 export default {
   props: {
-    name: String,
-    placeholder: String
+    name: {
+      type: String,
+      required: true
+    },
+    placeholder: {
+      type: String,
+      required: true
+    }
   }
 }
 </script>
