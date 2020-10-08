@@ -1,5 +1,7 @@
 <template>
-  <button>test</button>
+  <button>
+    <slot />
+  </button>
 </template>
 
 <script>

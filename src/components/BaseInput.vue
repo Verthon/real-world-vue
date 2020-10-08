@@ -6,7 +6,7 @@
 export default {
   props: {
     name: String,
-    placeholder: String,
+    placeholder: String
   }
 }
 </script>

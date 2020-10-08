@@ -1,5 +1,6 @@
 <template>
-  <div id="nav">
+  <div class="nav" id="nav">
+    <router-link class="brand" to="/">Real World App</router-link>
     <!-- named routes are preffered -->
     <nav class="nav">
       <router-link :to="{ name: 'event-list' }">Home</router-link> |

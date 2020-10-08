@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@types/lodash.upperfirst": "^4.3.6",
+    "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "lodash.camelcase": "^4.3.0",
     "lodash.upperfirst": "^4.3.1",
