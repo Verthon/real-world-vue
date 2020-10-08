@@ -58,7 +58,8 @@
 </template>
 
 <script lang="js">
-import Datepicker from "vuejs-datepicker";
+import Datepicker from "vuejs-datepicker"
+import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     const times = []
@@ -67,19 +68,24 @@ export default {
     }
     return {
       times,
-      categories: this.$store.state.categories,
       event: this.createFreshEvent()
     }
+  },
+  computed: {
+    ...mapState({
+      categories: state => state.categories
+    }),
+    ...mapGetters(['getCategoriesLength'])
   },
   components: {
     Datepicker,
   },
   methods: {
     createEvent() {
-      this.$store.dispatch('createEvent', event)
+      this.$store.dispatch('createEvent', this.event)
     },
     createFreshEvent() {
-      const user = this.$store.this.state.user
+      const user = mapState({ user: state => state.user })
       const id = Math.floor(Math.random() * 10000000)
       return {
       id,

@@ -44,6 +44,30 @@
       "date": "2019-02-02T23:27:00.000Z",
       "time": "1:00",
       "attendees": []
+    },
+    {
+      "id": 8448188,
+      "user": {},
+      "category": "housing",
+      "organizer": {},
+      "title": "dsad",
+      "description": "",
+      "location": "",
+      "date": "",
+      "time": "",
+      "attendees": []
+    },
+    {
+      "id": 8976256,
+      "user": {},
+      "category": "food",
+      "organizer": {},
+      "title": "Test food category",
+      "description": "description",
+      "location": "Warsaw",
+      "date": "2020-10-01T12:38:00.000Z",
+      "time": "4:00",
+      "attendees": []
     }
   ]
 }
