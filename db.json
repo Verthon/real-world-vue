@@ -231,6 +231,18 @@
       "date": "",
       "time": "5:00",
       "attendees": []
+    },
+    {
+      "id": 3948061,
+      "user": {},
+      "category": "",
+      "organizer": {},
+      "title": "Title",
+      "description": "description",
+      "location": "London UK",
+      "date": "2020-10-07T11:26:00.000Z",
+      "time": "2:00",
+      "attendees": []
     }
   ]
 }
