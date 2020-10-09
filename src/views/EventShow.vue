@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="event-header">
-      <span class="eyebrow">@{{ event.time }} on {{ event.date | date }}</span>
+      <span class="eyebrow"
+        >@{{ event.time | '' }} on {{ event.date | date }}</span
+      >
       <h1 class="title">{{ event.title }}</h1>
       <h5>Organized by {{ event.organizer ? event.organizer.name : '' }}</h5>
       <h5>Category: {{ event.category }}</h5>
@@ -35,22 +37,22 @@
 </template>
 
 <script>
-import EventService from '@/services/EventService.ts'
+import { mapState, mapActions } from 'vuex'
 export default {
   props: ['eventId'],
-  data() {
-    return {
-      event: {},
-      error: null
-    }
-  },
   created() {
-    EventService.getEvent(this.eventId)
-      .then(res => {
-        this.event = res.data
-      })
-      .catch(error => (this.error = error))
-  }
+    console.log('created fire', this.eventId)
+    this.fetchEvent(this.eventId)
+  },
+  computed: mapState({
+    event: state => state.event.event
+  }),
+  methods: mapActions('event', ['fetchEvent'])
+  // methods: {
+  //   fetchEvent(id) {
+  //     return this.$store.dispatch('event/fetchEvent', id)
+  //   }
+  // }
 }
 </script>
 

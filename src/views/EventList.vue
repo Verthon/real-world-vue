@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Event list</h1>
-    <EventCard v-for="event in events" :key="event.id" :event="event" />
+    <h1>Events for {{ user.user.name }}</h1>
+    <EventCard v-for="event in event.events" :key="event.id" :event="event" />
   </div>
 </template>
 
@@ -12,10 +12,10 @@ export default {
   components: {
     EventCard
   },
-  computed: mapState(['events']),
+  computed: mapState(['event', 'user']),
   methods: {
     fetchEvents() {
-      this.$store.dispatch('fetchEvents')
+      this.$store.dispatch('event/fetchEvents')
     }
   },
   created() {

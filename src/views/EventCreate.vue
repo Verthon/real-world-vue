@@ -85,7 +85,7 @@ export default {
       this.$store.dispatch('createEvent', this.event)
     },
     createFreshEvent() {
-      const user = mapState({ user: state => state.user })
+      const user = mapState({ user: state => state.user.user })
       const id = Math.floor(Math.random() * 10000000)
       return {
       id,
