@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     createEvent() {
-      this.$store.dispatch('createEvent', this.event)
+      this.$store.dispatch('event/createEvent', this.event)
     },
     createFreshEvent() {
       const user = mapState({ user: state => state.user.user })

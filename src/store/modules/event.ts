@@ -20,23 +20,41 @@ export const mutations = {
 }
 
 export const actions = {
-  createEvent({ commit }, event: Event) {
+  createEvent({ commit, dispatch }, event: Event) {
     EventService.postEvent(event)
-    commit('ADD_EVENT', event)
+      .then(res => {
+        commit('ADD_EVENT', event)
+        const notification = {
+          type: 'success',
+          message: `Your event was added successfully`
+        }
+        dispatch('notification/add', notification, {root: true})
+      })
+      .catch(error => {
+        const notification = {
+          type: 'error',
+          message: `There was a problem fetching events ${error.message}`
+        }
+        dispatch('notification/add', notification, {root: true})
+      })
+    
   },
-  fetchEvents({ commit }) {
+  fetchEvents({ commit, dispatch }) {
     EventService.getEvents()
       .then(res => {
         commit('SET_EVENTS', res.data)
       })
       .catch(error => {
-        console.error(error)
+        const notification = {
+          type: 'error',
+          message: `There was a problem fetching events ${error.message}`
+        }
+        dispatch('notification/add', notification, {root: true})
       })
   },
-  fetchEvent({ commit, getters }: {commit: any, getters: any}, id: number) {
+  fetchEvent({ commit, getters, dispatch }: {commit: any, getters: any, dispatch: any}, id: number) {
 
     const event = getters.getEventById(id)
-    console.log('fetchEvent fired', event)
     if (event) {
       commit('SET_EVENT', event)
       return event
@@ -44,6 +62,12 @@ export const actions = {
       return EventService.getEvent(id).then(response => {
         commit('SET_EVENT', response.data)
         return response.data
+      }).catch(error => {
+        const notification = {
+          type: 'error',
+          message: `There was a problem fetching events ${error.message}`
+        }
+        dispatch('notification/add', notification, {root: true})
       })
     }
   }
