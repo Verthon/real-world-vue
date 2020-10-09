@@ -14,7 +14,7 @@ type User = {
   name: string
 }
 
-type Event = {
+export type Event = {
   id: number,
       user: User,
       category: string,
